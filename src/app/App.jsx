@@ -5,6 +5,7 @@ import Button from '../components/UI/buttons/Button';
 import Container from '../components/UI/containers/Container';
 import ErrorMsg from '../components/UI/errorMsg/ErrorMsg';
 import Form from '../components/UI/form/Form';
+import Select from '../components/UI/form/Select';
 import Header from '../components/UI/header/Header';
 import Heading1 from '../components/UI/headings/Heading1';
 import Heading3 from '../components/UI/headings/Heading3';
@@ -41,10 +42,10 @@ const App = () => {
             </Header>
 
             <Main>
-                {editOp && <select style={{ marginBottom: '1rem' }} onChange={handleChange}>
+                {editOp && <Select onChange={handleChange}>
                     <option value="">Select</option>
                     {towns.map((town, i) => <option key={i} value={town}>{town}</option>)}
-                </select>}
+                </Select>}
 
                 {formState && <Form onSubmit={handleSubmit}>
                     <InputGroup

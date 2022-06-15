@@ -36,14 +36,17 @@ const useClock = (init, towns) => {
     }
 
     const handleDelete = (id) => {
-        const filteredZones = zones.timeZone.filter((zone, index) => index !== id);
+        if (window.confirm('Do you want to delete?')) {
+            const filteredZones = zones.timeZone.filter((zone, index) => index !== id);
 
-        setZones({
-            ...zones,
-            timeZone: [
-                ...filteredZones,
-            ],
-        });
+            setZones({
+                ...zones,
+                timeZone: [
+                    ...filteredZones,
+                ],
+            });
+        }
+
     }
 
     const handleEdit = (city) => {
