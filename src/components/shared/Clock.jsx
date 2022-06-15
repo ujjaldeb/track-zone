@@ -18,6 +18,7 @@ const Clock = ({ city, i, seconds, handleEdit, handleDelete, handleAddEvent, eve
             <Heading1>{new Date(seconds).toLocaleTimeString('en-GB', { timeZone: city })}</Heading1>
 
             {events.map((event, index) => city === event.city && <AnEvent
+                key={index}
                 index={index}
                 event={event}
                 handleDeleteEvent={handleDeleteEvent}
