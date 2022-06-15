@@ -5,6 +5,8 @@ const Header = styled.header`
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
+    background: #eeeeee;
+    padding: 2rem 0;
 `
 
 export default Header;

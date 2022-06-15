@@ -4,6 +4,7 @@ import InputGroup from '../components/shared/forms/InputGroup';
 import Button from '../components/UI/buttons/Button';
 import Container from '../components/UI/containers/Container';
 import ErrorMsg from '../components/UI/errorMsg/ErrorMsg';
+import Footer from '../components/UI/footer/Footer';
 import Form from '../components/UI/form/Form';
 import Select from '../components/UI/form/Select';
 import Header from '../components/UI/header/Header';
@@ -22,7 +23,7 @@ const towns = ['Europe/Paris', 'Pacific/Fiji', 'Asia/Shanghai', 'Asia/Tokyo', 'E
 
 const App = () => {
     const { seconds, cities, zones, editOp, handleClick, handleCityClock, handleDelete, handleEdit, handleChange } = useClock(init, towns);
-    const { formState, events, error, handleAddEvent, handleFormElement, handleSubmit, handleDeleteEvent } = useEvent();
+    const { formState, events, error, handleAddEvent, handleFormElement, handleSubmit, handleDeleteEvent, handleEditEvent } = useEvent();
 
     return (
         <Container>
@@ -82,9 +83,13 @@ const App = () => {
                         handleDelete={handleDelete}
                         handleAddEvent={handleAddEvent}
                         handleDeleteEvent={handleDeleteEvent}
+                        handleEditEvent={handleEditEvent}
                     />)}
                 </UnOrderedList>
             </Main>
+            <Footer>
+                Developed by DEB
+            </Footer>
         </Container>
     );
 };

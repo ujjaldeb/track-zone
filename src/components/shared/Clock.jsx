@@ -22,6 +22,7 @@ const Clock = ({ city, i, seconds, handleEdit, handleDelete, handleAddEvent, eve
                 index={index}
                 event={event}
                 handleDeleteEvent={handleDeleteEvent}
+                handleEditEvent={handleEditEvent}
             />)}
             <Button style={{ display: 'block', marginLeft: 'auto' }} onClick={() => handleAddEvent(city, i)}>Add Event</Button>
         </div>}</ListItem>

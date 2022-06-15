@@ -16,6 +16,7 @@ const useClock = (init, towns) => {
         }
     }, []);
 
+
     const handleClick = (e) => {
         setCities([
             ...towns
@@ -36,7 +37,7 @@ const useClock = (init, towns) => {
     }
 
     const handleDelete = (id) => {
-        if (window.confirm('Do you want to delete?')) {
+        if (window.confirm('Do you want to delete the clock?')) {
             const filteredZones = zones.timeZone.filter((zone, index) => index !== id);
 
             setZones({

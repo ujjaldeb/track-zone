@@ -33,7 +33,6 @@ const useEvent = () => {
             ...formState,
             [e.target.name]: e.target.value,
         });
-
     }
 
     const handleSubmit = (e) => {
@@ -63,12 +62,15 @@ const useEvent = () => {
 
     }
 
-    // const handleEditEvent = () => {
-    //     // TO do
-    // }
+    const handleEditEvent = () => {
+        setFormState({
+            ...formState,
+        })
+    }
 
     const handleDeleteEvent = (ev, id) => {
         const filteredEvents = events.filter((event, index) => ev !== event && id !== index);
+
         setEvents([
             ...filteredEvents,
         ]);
@@ -81,7 +83,8 @@ const useEvent = () => {
         handleAddEvent,
         handleFormElement,
         handleSubmit,
-        handleDeleteEvent
+        handleDeleteEvent,
+        handleEditEvent,
     }
 };
 
