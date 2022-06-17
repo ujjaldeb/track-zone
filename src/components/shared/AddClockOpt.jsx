@@ -1,8 +1,8 @@
 import Button from "../UI/buttons/Button";
 
-const AddClockOpt = ({ index, city, handleCityClock }) => {
+const AddClockOpt = ({ city, handleCityClock }) => {
     return (
-        <li key={index}><Button onClick={() => handleCityClock(city)}>{city}</Button></li>
+        <li><Button onClick={() => handleCityClock(city)}>{city}</Button></li>
     );
 };
 

@@ -6,7 +6,7 @@ const Header = styled.header`
     align-items: center;
     margin-bottom: 2rem;
     background: #eeeeee;
-    padding: 2rem 0;
+    padding: 3rem 0;
 `
 
 export default Header;

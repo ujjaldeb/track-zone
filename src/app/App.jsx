@@ -28,7 +28,7 @@ const App = () => {
     return (
         <Container>
             <Header>
-                <Heading1>World Clock</Heading1>
+                <Heading1>Track Zone</Heading1>
                 {seconds && <Heading3>{new Date(seconds).toLocaleTimeString('en-GB', { timeZone: 'UTC' })} [GMT]</Heading3>}
                 {/* <Button onClick={() => handleEdit()}>Edit</Button> */}
                 <Button onClick={handleClick}>Add Clock</Button>
@@ -36,7 +36,6 @@ const App = () => {
                     {cities && cities.map((city, index) => <AddClockOpt
                         key={index}
                         city={city}
-                        index={index}
                         handleCityClock={handleCityClock}
                     />)}
                 </UnOrderedList>
@@ -48,13 +47,14 @@ const App = () => {
                     {towns.map((town, i) => <option key={i} value={town}>{town}</option>)}
                 </Select>}
 
-                {formState && <Form onSubmit={handleSubmit}>
+                {formState && <Form onSubmit={(e) => handleSubmit(e, formState.uniqueID)}>
                     <InputGroup
                         type="text"
                         label="Title: "
                         name="title"
                         error={error.title}
                         placeholder={'Enter event title'}
+                        value={formState.title}
                         onChange={handleFormElement}
                     />
                     <InputGroup
@@ -63,6 +63,7 @@ const App = () => {
                         name="time"
                         error={error.time}
                         placeholder={'Enter time'}
+                        value={formState.time}
                         onChange={handleFormElement}
                     />
                     <button type='submit'>Submit</button>

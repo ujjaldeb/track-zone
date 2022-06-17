@@ -1,4 +1,5 @@
 import { useState } from "react";
+import shortid from 'shortid';
 
 const useEvent = () => {
     const [formState, setFormState] = useState(null);
@@ -9,6 +10,7 @@ const useEvent = () => {
         setFormState({
             city,
             id,
+            uniqueID: shortid.generate(),
             title: '',
             time: '',
         });
@@ -20,6 +22,8 @@ const useEvent = () => {
                 ...error,
                 [e.target.name]: '',
             });
+
+            return;
         }
 
         if (error.time && formState.time) {
@@ -27,6 +31,8 @@ const useEvent = () => {
                 ...error,
                 [e.target.name]: '',
             });
+
+            return;
         }
 
         setFormState({
@@ -35,7 +41,7 @@ const useEvent = () => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, id) => {
         e.preventDefault();
 
         if (!formState.title) {
@@ -44,17 +50,30 @@ const useEvent = () => {
             setError({
                 ...error,
             });
+
+            return;
         } else if (!formState.time) {
             error.time = 'Invalid time';
 
             setError({
                 ...error,
             });
+
+            return;
         } else {
-            setEvents([
-                formState,
-                ...events,
-            ]);
+            if (id === formState.uniqueID) {
+                const filteredEvent = events.filter((event) => id !== event.uniqueID);
+
+                setEvents([
+                    formState,
+                    ...filteredEvent,
+                ]);
+            } else {
+                setEvents([
+                    formState,
+                    ...events,
+                ]);
+            }
 
             setError({});
             setFormState(null);
@@ -62,18 +81,22 @@ const useEvent = () => {
 
     }
 
-    const handleEditEvent = () => {
+    const handleEditEvent = (id) => {
+        const theEvent = events.find((event) => id === event.uniqueID);
+
         setFormState({
-            ...formState,
+            ...theEvent,
         })
     }
 
     const handleDeleteEvent = (ev, id) => {
-        const filteredEvents = events.filter((event, index) => ev !== event && id !== index);
+        if (window.confirm('Do you want to delete the event?')) {
+            const filteredEvents = events.filter((event, index) => ev !== event && id !== index);
 
-        setEvents([
-            ...filteredEvents,
-        ]);
+            setEvents([
+                ...filteredEvents,
+            ]);
+        }
     }
 
     return {
